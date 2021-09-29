@@ -20,6 +20,9 @@ module.exports = {
           if (!m.msg.url) await this.updateMediaMessage(m)
           break
       }
+      
+       
+       
       m.exp = 0
       m.limit = false
       try {
@@ -173,7 +176,8 @@ module.exports = {
           if (!('sDemote' in chat)) chat.sDemote = ''
           if (!('delete' in chat)) chat.delete = false
           if (!('antiLink' in chat)) chat.antiLink = false
-          if (!'antiToxic' in chat) chat.antiToxic = false
+          if (!('antiToxic' in chat)) chat.antiToxic = false
+          if (!('expired' in chat)) chat.expired = {}
         } else global.DATABASE._data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
@@ -185,6 +189,7 @@ module.exports = {
           delete: false,
           antiLink: false,
           antiToxic: false,
+          expired: {},
         }
       } catch (e) {
         console.error(e)
@@ -192,6 +197,9 @@ module.exports = {
       if (opts['nyimak']) return
       if (!m.fromMe && opts['self']) return
       if (m.chat == 'status@broadcast') return
+      if (opts['pconly'] && m.chat.endsWith('g.us')) return
+      if (opts['gconly'] && !m.chat.endsWith('g.us')) return
+      if (opts['swonly'] && m.chat !== 'status@broadcast') return
       if (typeof m.text !== 'string') m.text = ''
       for (let name in global.plugins) {
         let plugin = global.plugins[name]
@@ -212,7 +220,7 @@ module.exports = {
       let usedPrefix
       let _user = global.DATABASE.data && global.DATABASE.data.users && global.DATABASE.data.users[m.sender]
 
-      let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+      let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
       let isOwner = isROwner || m.fromMe
       let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
       let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
@@ -222,6 +230,7 @@ module.exports = {
       let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {} // Your Data
       let isAdmin = user.isAdmin || user.isSuperAdmin || false // Is User Admin?
       let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false // Are you Admin?
+      let isBotBussines = this.user.isBussines
       let DevMode = /true/i.test(global.DeveloperMode.toLowerCase())
       for (let name in global.plugins) {
         let plugin = global.plugins[name]
@@ -254,6 +263,7 @@ module.exports = {
           isOwner,
           isAdmin,
           isBotAdmin,
+          isBotBussines,
           isPrems,
           chatUpdate,
         })) continue
@@ -282,8 +292,8 @@ module.exports = {
           if (m.chat in global.DATABASE._data.chats || m.sender in global.DATABASE._data.users) {
             let chat = global.DATABASE._data.chats[m.chat]
             let user = global.DATABASE._data.users[m.sender]
-            if (!['unbanchat.js', 'link.js', 'pengumuman.js', 'creator.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
-            if (!['unbanuser.js', 'inv.js', 'link.js', 'creator.js', 'profile.js'].includes(name) && user && user.banned && !isROwner) {
+            if (!['unbanchat.js', 'creator.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
+            if (!['unbanuser.js', 'inv.js', 'creator.js', 'profile.js'].includes(name) && user && user.banned && !isROwner) {
               if (!opts['msgifbanned']) m.reply(`*ANDA TERBANNED* ${user.bannedReason ? `\nKarena *${user.bannedReason}*` : ''}
 
 Hubungi: 
@@ -359,6 +369,7 @@ ${(global.linkGC).map((v, i) => '*Group ' + (i + 1) + '*\n' + v).join`\n\n`}
             isOwner,
             isAdmin,
             isBotAdmin,
+            isBotBussines,
             isPrems,
             chatUpdate,
             DevMode,

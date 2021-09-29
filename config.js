@@ -1,5 +1,5 @@
 global.DeveloperMode = 'false' //true Or false
-global.linkGC = ['https://chat.whatsapp.com/Lb4Emjih98rBiCZiZoS2eM', 'https://chat.whatsapp.com/FrluVyY5kBRIhY6yKfH4DI']
+global.linkGC = ['https://chat.whatsapp.com/Lb4Emjih98rBiCZiZoS2eM', 'https://chat.whatsapp.com/GHnvi284XJTGc529j6M865']
 global.Owner = {
   // use the phone number with the country code, for example Indonesia '62' America '1' etc
   '62895336282144': { // put your number here
@@ -8,22 +8,19 @@ global.Owner = {
     isReport: true, // if true this number will send if user use command /report or /join
     isCreator: true // if true this number will send if user use command /owner or /creator
   },
-  '6287878505740': { // put your number here
-    name: 'Diablo botz',
+  '6288217277973': { // put your number here
+    name: 'Diablo botz 1',
     isDev: false, // if true this number will send if bot have bug and developer mode true
     isReport: true, // if true this number will send if user use command /report or /join
     isCreator: false // if true this number will send if user use command /owner or /creator
   },
-  '6288217277973': {
-    name: 'Adiixyz',
+  '6287878505740': {
+    name: 'diablo botz 2',
     isReport: true, // if true this number will send if user use command /report or /join
   },
-  '6285713964963': {
-    isReport: true
-  },
-  '13479805233': {} // ignore if you don't want anything, like name dll
+  '6283143393763': {} // ignore if you don't want anything, like name dll
 }
-global.mods = ['13479805233'] // Want some help?
+global.mods = ['62895336282144'] // Moderator?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
@@ -46,8 +43,8 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.packname = 'wa.me/6285713964963'
-global.author = 'Metro Bot Is The Best'
+global.packname = 'wa.me/62895336282144'
+global.author = 'diablo Botz Is The Best'
 
 global.multiplier = 39 // The higher, The harder levelup
 
