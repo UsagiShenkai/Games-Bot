@@ -23,7 +23,7 @@ async function handler(m, { conn, args, isROwner }) {
 
             const buttonMessage = {
                 contentText: txt,
-                footerText: '©games-wabot',
+                footerText: '©wabot',
                 buttons: buttons,
                 headerType: 1
             }
