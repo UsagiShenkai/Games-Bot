@@ -1,25 +1,6 @@
-let fs = require ('fs')
-let util = require('util')
+let fs = require('fs')
 let path = require('path')
-let fetch = require('node-fetch')
 let levelling = require('../lib/levelling')
-let moment = require('moment-timezone')
-let { performance } = require('perf_hooks')
-let { MessageType, mentionedJid } = require('@adiwajshing/baileys')
-
-//========== BATASSS NGABBB ==========//
-
-let handler  = async (m, { conn, usedPrefix: _p, command }) => {
-let old = performance.now()await conn.fakeReply(m.chat, '*「  ⚠ 」 Loading...*', '0@s.whatsapp.net', '*Menampilkan st Menu*', 'status@broadcast')
-const chats = conn.chats.all()
-const groups = chats.filter(v => v.jid.endsWith('g.us'))
-const groupsIn = groups.filter(v => !v.read_only)
-let AdiOfficial = './src/avatar_contact.png'
-let pantek = 'https://i.ibb.co/8z7zqXv/IMG-20210618-WA0001.jpg'
-
-  try {
-    AdiOfficial = await conn.getProfilePicture(m.sender)
-  } catch (e) {
 let tags = {
   'main': 'Main',
   'rpg': 'Epic RPG',
@@ -51,7 +32,7 @@ let tags = {
 const defaultMenu = {
   before: `
 ╭─「 %me 」
-│ Hai, %name!
+│ ${ucapan()}, %name!
 │
 │ Tanggal: *%week %weton, %date*
 │ Tanggal Islam: *%dateIslamic*
@@ -176,7 +157,6 @@ handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
-handler.register = true
 
 handler.admin = false
 handler.botAdmin = false
@@ -190,8 +170,24 @@ const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 
 function clockString(ms) {
-  let h = isNaN(ms) ? '	--' : Math.floor(ms / 3600000)
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
+function ucapan() {
+  const time = (new Date().getUTCHours() + 7) % 24
+  res = "Woi. Pagi"
+  if (time >= 4) {
+    res = "Selamat Pagi"
+  }
+  if (time >= 12) {
+    res = "Selamat Siang"
+  }
+  if (time >= 15) {
+    res = "Selamat Sore"
+  }
+  if (time >= 19) {
+    res = "Selamat Malam"
+  }
+  return res
