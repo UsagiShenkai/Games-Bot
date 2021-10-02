@@ -21,15 +21,15 @@ let handler  = async (m, { conn, usedPrefix }) => {
 ╠➥ *Uptime:* ${uptime}
 ║
 ╠═〘 DONASI 〙 ═
-╠➥ Gopay: 085713964963
-╠➥ Indosat: 085713964963
+╠➥ three: 0895336282144
+╠➥ saweria: https://saweria.co/thesadboy01
 ║
 ╠═ Request? ${package.bugs.url}
 ╠═ officiall Group *${conn.getName(conn.user.jid)}* :
 ${(global.linkGC).map((v, i) => '║ *Group ' + (i + 1) + '*\n║' + v).join`\n║\n`}
 ║
 ║${readMore}
-╠═〘 PIRACY METRO BOT 〙 ═
+╠═〘 PIRACYY *${conn.getName(conn.user.jid)}*〙 ═
 ╠➥ *KAMI TIDAK BERTANGGUNG*
 ║   *JAWAB ATAS PENYALAH*
 ║   *GUNAAN BOT*
@@ -42,13 +42,13 @@ ${(global.linkGC).map((v, i) => '║ *Group ' + (i + 1) + '*\n║' + v).join`\n�
 ║ 
 ║ 
 ╠═ ©2021 ${package.name}
-╠═ Scrip original by Norutomo
-╠═〘 METRO BOT 〙 ═
+╠═ Scrip original by Norutomo and bochil gaming
+╠═〘 *${conn.getName(conn.user.jid)}*〙 ═
 `.trim(), m)
 }
 handler.help = ['info']
 handler.tags = ['about']
-handler.command = /^(info(bot)?)$/i
+handler.command = /^(bot|info)$/i
 
 handler.fail = null
 
