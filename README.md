@@ -28,7 +28,7 @@
 ```bash
 pkg update && pkg upgrade
 pkg install bash && pkg install wget
-wget -O - https://raw.githubusercontent.com/BochilGaming/games-wabot/main/install2.sh | bash
+wget -O - https://raw.githubusercontent.com/Kangsad01/wabot/main/install2.sh | bash
 ```
 
 ---------
@@ -170,8 +170,9 @@ conn.logger.level = 'debug'
 
 #### Contributor
 [![idhamthoriqbot](https://github.com/idhamthoriqbot.png?size=100)](https://github.com/idhamthoriqbot)
-[![zatu22](https://github.com/zatu22)](https://github.com/zatu22)
+[![zatu22](https://github.com/zatu22.png?size=100)](https://github.com/zatu22)
 [![Adiixyz](https://github.com/Adiixyz.png?size=100)](https://github.com/Adiixyz)
 [![Nobuyaki](https://github.com/Nobuyaki.png?size=100)](https://github.com/Nobuyaki)
 [![arisawali2014](https://github.com/arisawali2014.png?size=100)](https://github.com/arisawali2014)
-[![botstylee](https://github.com/botstylee)](https://github.com/botstylee)
+[![botstylee](https://github.com/botstylee.png?size=100)](https://github.com/botstylee)
+[![kangsad01](https://github.com/Kangsad01.png?size=100)](https://github.com/Kangsad01)
