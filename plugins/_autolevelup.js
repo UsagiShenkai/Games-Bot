@@ -7,8 +7,11 @@ handler.before = m => {
     let before = user.level * 1
     while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
     if (before !== user.level) {
-        let str = `Selamat @${m.sender.split`@`[0]} Anda Naik 🧬level 
+        let str = `*「LEVEL UP」*
+        
+Selamat @${m.sender.split`@`[0]} Anda Naik 🧬level 
 *${before}* --> *${user.level}*
+gunakan *.profile* untuk mengecek
 `.trim()
         conn.reply(m.chat, str, false, {
             contextInfo: {
